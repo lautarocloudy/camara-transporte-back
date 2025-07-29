@@ -6,8 +6,7 @@ const conexion = async()=>{
     try{
 
         
-       await mongoose.connect("mongodb+srv://lautarorcloudy:1lnVJX70VJZzwiSA@cluster0.7nxdyle.mongodb.net/Cluster0");
-    //    mongodb+srv://lautarocloudy:<password>@cluster0.dbqadgh.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+       await mongoose.connect("mongodb+srv://lautarorcloudy:1lnVJX70VJZzwiSA@cluster0.onkjrgt.mongodb.net/Cluster0");
        console.log("conectado correctamente");
 
     }catch(error){
