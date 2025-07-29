@@ -31,7 +31,7 @@ const corsOptions = {
   // methods: 'GET,POST,PUT,DELETE,OPTIONS',
   // allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'X-Access-Token', 'Authorization'],
   // credentials: true // Habilita las credenciales
-  origin: 'https://warimba.netlify.app',
+  origin: 'https://camara-de-transportistas-unidos-ar.netlify.app/',
   credentials: true,
   allowedHeaders: [
     'Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'X-Access-Token', 'Authorization'
