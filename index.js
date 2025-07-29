@@ -14,23 +14,6 @@ const app = express();
 const puerto = process.env.PORT || 3000;
 
 const corsOptions = {
-  // origin: function (origin, callback) {
-  //   const allowedOrigins = [
-  //     'https://camara-de-transportistas-unidos-ar.netlify.app/',  // Dominio de producción
-  //     'http://localhost:3000',          // Localhost para desarrollo
-  //     'null0',
-  //     'http://127.0.0.1:5173'                            // Permite el origen 'file://'
-  //   ];
-  //   if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
-  //     // Si el origen está en la lista o no hay origen (por ejemplo, en solicitudes 'file://')
-  //     callback(null, true);
-  //   } else {
-  //     callback(new Error('Not allowed by CORS'));
-  //   }
-  // },
-  // methods: 'GET,POST,PUT,DELETE,OPTIONS',
-  // allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'X-Access-Token', 'Authorization'],
-  // credentials: true // Habilita las credenciales
   origin: 'https://camara-de-transportistas-unidos-ar.netlify.app/',
   credentials: true,
   allowedHeaders: [
