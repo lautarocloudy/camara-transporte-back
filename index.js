@@ -13,21 +13,23 @@ conexion();
 const app = express();
 const puerto = process.env.PORT || 3000;
 
-const allowedOrigins = [
-  'http://localhost:3000',
-  'https://camara-de-transportistas-unidos-ar.netlify.app'
-];
-
 const corsOptions = {
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('No permitido por CORS'));
-    }
-  },
+  origin: 'https://camara-de-transportistas-unidos-ar.netlify.app', 
   credentials: true,
+  allowedHeaders: [
+    'Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'X-Access-Token', 'Authorization'
+  ],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
 };
+
+// Middleware para forzar headers CORS manualmente (por si Vercel los ignora)
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "https://camara-de-transportistas-unidos-ar.netlify.app");
+  res.header("Access-Control-Allow-Credentials", "true");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, X-Access-Token, Authorization");
+  res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
+  next();
+});
 
 // Configurar CORS
 app.use(cors(corsOptions));
@@ -44,13 +46,15 @@ app.use(express.urlencoded({ extended: true }));
 
 // Importar y usar rutas
 const rutas_usuarios = require('./rutas/usuarios');
-const comprobantes = require("./rutas/Comprobantes")
-const clientes = require('./rutas/Clientes')
-const interaccion = require("./rutas/Interaccion")
+const comprobantes = require("./rutas/Comprobantes");
+const clientes = require('./rutas/Clientes');
+const interaccion = require("./rutas/Interaccion");
+
 app.use("/api/user", rutas_usuarios);
 app.use('/api/comprobantes', comprobantes);
-app.use('/api/clientes',  clientes);
-app.use('/api/interaccion',  interaccion);
+app.use('/api/clientes', clientes);
+app.use('/api/interaccion', interaccion);
+
 // Crear servidor y escuchar peticiones
 app.listen(puerto, () => {
   console.log("servidor corriendo en el puerto " + puerto);
