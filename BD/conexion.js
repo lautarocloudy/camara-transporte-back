@@ -6,7 +6,7 @@ const conexion = async()=>{
     try{
 
         
-       await mongoose.connect("mongodb+srv://lautarorcloudy:1lnVJX70VJZzwiSA@cluster0.onkjrgt.mongodb.net/camara");
+       await mongoose.connect("mongodb+srv://lautarorcloudy:Iffj1cdkEvSTwhgd@cluster0.onkjrgt.mongodb.net/camara");
        console.log("conectado correctamente");
 
     }catch(error){
